@@ -1,6 +1,8 @@
 # Agente Analítico de IA
 
-Este proyecto es un agente conversacional de Inteligencia Artificial diseñado para permitir que los usuarios realicen preguntas sobre sus datos de negocio en lenguaje natural y reciban respuestas basadas en consultas SQL ejecutadas contra Google BigQuery y Cloud SQL.
+Este proyecto es un agente conversacional de Inteligencia Artificial diseñado para permitir que los usuarios realicen preguntas sobre sus datos de negocio en lenguaje natural y reciban respuestas basadas en consultas SQL ejecutadas contra bases de datos MySQL.
+
+![Arquitectura Logica](docs/logical_architecture.png)
 
 ## Estructura del Proyecto
 
