@@ -1,0 +1,15 @@
+# Modelos Gemini
+- models/gemini-2.5-flash-lite (Display Name: Gemini 2.5 Flash-Lite).
+- models/gemini-2.5-flash-image (Display Name: Nano Banana)   .
+- models/gemini-2.5-flash-lite-preview-09-2025 (Display Name: Gemini 2.5 Flash-Lite Preview Sep 2025).
+- models/gemini-3-pro-preview (Display Name: Gemini 3 Pro Preview).
+- models/gemini-3-flash-preview (Display Name: Gemini 3 Flash Preview).
+- models/gemini-3.1-pro-preview (Display Name: Gemini 3.1 Pro Preview).
+- models/gemini-3.1-pro-preview-customtools (Display Name: Gemini 3.1 Pro Preview Custom Tools).
+- models/gemini-3.1-flash-lite-preview (Display Name: Gemini 3.1 Flash Lite Preview).
+- models/gemini-3-pro-image-preview (Display Name: Nano Banana Pro).
+- models/nano-banana-pro-preview (Display Name: Nano Banana Pro).
+- models/gemini-3.1-flash-image-preview (Display Name: Nano Banana 2).
+- models/gemini-robotics-er-1.5-preview (Display Name: Gemini Robotics-ER 1.5 Preview).
+- models/gemini-2.5-computer-use-preview-10-2025 (Display Name: Gemini 2.5 Computer Use Preview 10-2025)                      │
+- models/deep-research-pro-preview-12-2025 (Display Name: Deep Research Pro Preview (Dec-12-2025)) 

@@ -1,0 +1,40 @@
+kind: sources
+name: mysql-proyectos
+type: mysql
+host: 192.168.1.48
+port: 3306
+database: proyectos
+user: root
+password: welcome1
+---
+#kind: tools
+#name: list_tables
+#type: mysql-sql
+#source: mysql-proyectos
+#description: Lists all tables in the 'proyectos' database.
+#statement: |
+#  SHOW TABLES;
+kind: tools
+name: mysql_list_tables
+type: mysql-list-tables
+source: mysql-proyectos
+description: Use this tool to retrieve schema information for all or specified tables. Output format can be simple (only table names) or detailed.
+---
+kind: tools
+name: describe_table_mysql
+type: mysql-sql
+source: mysql-proyectos
+description: Shows the structure of a specific table.
+parameters:
+  - name: table_name
+    type: string
+    description: The name of the table to describe.
+statement: |
+  DESCRIBE ?;
+
+---
+kind: tools
+name: execute_sql_tool
+type: mysql-execute-sql
+source: mysql-proyectos
+description: Use this tool to execute sql statement.

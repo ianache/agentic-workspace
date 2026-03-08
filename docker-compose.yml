@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  # 1. Base de Datos MySQL
+  db:
+    image: mysql:8.0
+    container_name: proyectos-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: welcome1
+      MYSQL_DATABASE: proyectos
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  # 2. Servidor MCP Toolbox para Bases de Datos
+  toolbox-server:
+    image: node:18-slim
+    container_name: mcp-toolbox
+    working_dir: /app
+    volumes:
+      - ./backend/agent/toolbox_tools.yaml:/app/toolbox_tools.yaml
+    environment:
+      - MYSQL_HOST=db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=welcome1
+      - MYSQL_DATABASE=proyectos
+    command: npx @toolbox-sdk/server --tools-file toolbox_tools.yaml
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+
+  # 3. Backend (Agente ADK)
+  backend:
+    build:
+      context: ./backend/agent
+      dockerfile: Dockerfile
+    container_name: agent-backend
+    environment:
+      - LLM_PROVIDER=gemini
+      - LLM_MODEL=gemini-2.0-flash
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - MYSQL_HOST=db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=welcome1
+      - MYSQL_DATABASE=proyectos
+      - TOOLBOX_URL=http://toolbox-server:8080
+    ports:
+      - "8000:8000"
+    depends_on:
+      - toolbox-server
+      - db
+
+  # 4. Frontend (Next.js)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: chat-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
